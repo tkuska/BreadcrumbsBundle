@@ -6,6 +6,7 @@ use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel;
+use WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle;
 
 /**
  * Class AppKernel
@@ -34,8 +35,8 @@ class AppKernel extends Kernel
         $this->cachePrefix = $cachePrefix;
         $this->addBundle(FrameworkBundle::class);
         $this->addBundle(TwigBundle::class);
+        $this->addBundle(WhiteOctoberBreadcrumbsBundle::class);
         $this->addConfigFile(__DIR__.'/config.xml');
-        $this->addConfigFile(__DIR__.'/../Resources/config/breadcrumbs.xml');
     }
 
     public function addBundle($bundleClassName)
@@ -65,7 +66,6 @@ class AppKernel extends Kernel
             }
 
             $container->addObjectResource($this);
-            $container->setParameter('white_october_breadcrumbs.options', []);
         });
     }
     /**
