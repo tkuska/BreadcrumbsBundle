@@ -3,26 +3,15 @@ _This project is looking for maintainers - [details here](https://github.com/whi
 Installation
 ============
 
-1. Configure templating for your application if you haven't already.  For example:
-
-    ```yaml
-    # app/config/config.yml (Symfony <=3)
-    framework:
-        templating:
-            engines: ['twig']
-    
-    # config/packages/framework.yaml (Symfony 4)
-    templating:
-        engines: ['twig']
-    ```
-
-2. Install this bundle using [Composer](https://getcomposer.org/):
+1. Install this bundle using [Composer](https://getcomposer.org/):
     
     ``` bash
     composer require whiteoctober/breadcrumbs-bundle
     ```
+
+If you're using Symfony Flex, the following steps will be done automatically.
     
-3. Add this bundle to your application's kernel:
+2. Add this bundle to your application's kernel:
     
     ``` php
     // app/AppKernel.php
@@ -35,10 +24,8 @@ Installation
         );
     }
     ```
-    
-    If you're using Symfony 4, this step will be done for you by Symfony Flex.
 
-4. Configure the bundle in your config:
+3. Configure the bundle in your config:
     
     ``` yaml
     # app/config/config.yml
@@ -68,8 +55,8 @@ public function yourAction(User $user)
 }
 ```
 
-For Symfony 4, don't retrieve the service via `get`, instead use
-[dependency injection](https://symfony.com/doc/current/service_container.html#fetching-and-using-services):
+It is preferable, that you don't retrieve the service via `get`. Use 
+[dependency injection](https://symfony.com/doc/current/service_container.html#fetching-and-using-services) instead:
                                                               
 ```php
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
