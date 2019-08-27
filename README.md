@@ -1,4 +1,4 @@
-_This project is looking for maintainers - [details here](https://github.com/whiteoctober/BreadcrumbsBundle/issues/106)._
+_This is a fork of [whiteoctober/BreadcrumbsBundle](https://github.com/whiteoctober/BreadcrumbsBundle) maintained for newer Symfony versions. See [whiteoctober/BreadcrumbsBundle#106](https://github.com/whiteoctober/BreadcrumbsBundle/issues/106)._
 
 Installation
 ============
@@ -6,7 +6,7 @@ Installation
 1. Install this bundle using [Composer](https://getcomposer.org/):
     
     ``` bash
-    composer require whiteoctober/breadcrumbs-bundle
+    composer require mhujer/breadcrumbs-bundle
     ```
 
 If you're using Symfony Flex, the following steps will be done automatically.
@@ -250,7 +250,7 @@ Contributing
 
 We welcome contributions to this project, including pull requests and issues (and discussions on existing issues).
 
-If you'd like to contribute code but aren't sure what, the [issues list](https://github.com/whiteoctober/breadcrumbsbundle/issues) is a good place to start.
+If you'd like to contribute code but aren't sure what, the [issues list](https://github.com/mhujer/breadcrumbsbundle/issues) is a good place to start.
 If you're a first-time code contributor, you may find Github's guide to [forking projects](https://guides.github.com/activities/forking/) helpful.
 
 All contributors (whether contributing code, involved in issue discussions, or involved in any other way) must abide by our [code of conduct](https://github.com/whiteoctober/open-source-code-of-conduct/blob/master/code_of_conduct.md).
