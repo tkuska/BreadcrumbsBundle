@@ -6,6 +6,10 @@ php:
   - 7.2
   - 7.3
 
+env:
+  - COMPOSER_DEPENDENCIES=""
+  - COMPOSER_DEPENDENCIES="--prefer-lowest"
+
 matrix:
   include:
     - php: 7.3
@@ -13,7 +17,7 @@ matrix:
     - php: 7.3
       env: SYMFONY_VERSION="4.4.*"
     - php: 7.4snapshot
-      env: SYMFONY_VERSION="4.4.*"
+      env: SYMFONY_VERSION="5.0.*"
 
 sudo: false
 
@@ -28,7 +32,7 @@ before_install:
   - echo memory_limit = -1 >> $INI_FILE
 
 install:
-  - composer install
+  - travis_retry composer update --no-interaction $COMPOSER_DEPENDENCIES
 
 script:
   - vendor/bin/phpunit
