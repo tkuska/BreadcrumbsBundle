@@ -3,13 +3,16 @@
 namespace WhiteOctober\BreadcrumbsBundle\Twig\Extension;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 use WhiteOctober\BreadcrumbsBundle\Model\SingleBreadcrumb;
 
 /**
  * Provides an extension for Twig to output breadcrumbs
  */
-class BreadcrumbsExtension extends \Twig_Extension
+class BreadcrumbsExtension extends AbstractExtension
 {
     protected $container;
     protected $breadcrumbs;
@@ -26,9 +29,9 @@ class BreadcrumbsExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction("wo_breadcrumbs", array($this, "getBreadcrumbs")),
-            new \Twig_SimpleFunction("wo_breadcrumbs_exists", array($this, "hasBreadcrumbs")),
-            new \Twig_SimpleFunction("wo_render_breadcrumbs", array($this, "renderBreadcrumbs"), array("is_safe" => array("html"))),
+            new TwigFunction("wo_breadcrumbs", array($this, "getBreadcrumbs")),
+            new TwigFunction("wo_breadcrumbs_exists", array($this, "hasBreadcrumbs")),
+            new TwigFunction("wo_render_breadcrumbs", array($this, "renderBreadcrumbs"), array("is_safe" => array("html"))),
         );
     }
 
@@ -38,7 +41,7 @@ class BreadcrumbsExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            new \Twig_SimpleFilter("wo_is_final_breadcrumb", array($this, "isLastBreadcrumb")),
+            new TwigFilter("wo_is_final_breadcrumb", array($this, "isLastBreadcrumb")),
         );
     }
 
