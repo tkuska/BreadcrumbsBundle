@@ -5,6 +5,7 @@ dist: trusty
 php:
   - 7.2
   - 7.3
+  - 7.4
 
 env:
   - COMPOSER_DEPENDENCIES=""
@@ -16,7 +17,7 @@ matrix:
       env: SYMFONY_VERSION="4.3.*"
     - php: 7.3
       env: SYMFONY_VERSION="4.4.*"
-    - php: 7.4snapshot
+    - php: 7.3
       env: SYMFONY_VERSION="5.0.*"
 
 sudo: false
