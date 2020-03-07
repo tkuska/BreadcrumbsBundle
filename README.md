@@ -11,24 +11,21 @@ Installation
 
 If you're using Symfony Flex, the following steps will be done automatically.
     
-2. Add this bundle to your application's kernel:
-    
-    ``` php
-    // app/AppKernel.php
-    public function registerBundles()
-    {
-        $bundles = array(
-            // ...
-            new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
-            // ...
-        );
-    }
-    ```
+2. Enable the bundle by adding it to the list of registered bundles in the `config/bundles.php` file of your project:
 
-3. Configure the bundle in your config:
+```php
+// config/bundles.php
+
+return [
+    // ...
+    WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle::class => ['all' => true],
+];
+```
+
+3. Configure the bundle in `config/packages/white_october_breadcrumbs.yaml`:
     
     ``` yaml
-    # app/config/config.yml
+    # config/packages/white_october_breadcrumbs.yaml
     white_october_breadcrumbs: ~
     ```
   
@@ -126,10 +123,10 @@ public function yourAction()
 Configuration
 =============
 
-The following *default* parameters can be overriden in your `config.yml` or similar:
+The following *default* parameters can be overridden in your `config/packages/white_october_breadcrumbs.yaml`:
 
 ``` yaml
-# app/config/config.yml
+# config/packages/white_october_breadcrumbs.yaml
 white_october_breadcrumbs:
     separator:          '/'
     separatorClass:     'separator'
