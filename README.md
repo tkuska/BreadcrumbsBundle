@@ -224,14 +224,14 @@ There are two methods for doing this.
 
 1. You can override the template used by copying the
     `Resources/views/microdata.html.twig` file out of the bundle and placing it
-    into `app/Resources/WhiteOctoberBreadcrumbsBundle/views`, then customising
+    into `<your-project>/templates/bundles/WhiteOctoberBreadcrumbsBundle`, then customising
     as you see fit. Check the [Overriding bundle templates][1] documentation section
     for more information.
 
 2. Use the `viewTemplate` configuration parameter:
     
     ``` jinja
-    {{ wo_render_breadcrumbs({ viewTemplate: "YourOwnBundle::yourBreadcrumbs.html.twig" }) }}
+    {{ wo_render_breadcrumbs({ viewTemplate: "@WhiteOctoberBreadcrumbs/yourBreadcrumbs.html.twig" }) }}
     ```
 > **NOTE:** If you want to use the JSON-LD format, there's already an existing template 
 at `WhiteOctoberBreadcrumbsBundle::json-ld.html.twig`. Just set this template as the value for 
@@ -239,7 +239,7 @@ at `WhiteOctoberBreadcrumbsBundle::json-ld.html.twig`. Just set this template as
 
 
 
-[1]: http://symfony.com/doc/current/book/templating.html#overriding-bundle-templates
+[1]: https://symfony.com/doc/current/bundles/override.html#templates
 [2]: https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx
 
 Contributing
