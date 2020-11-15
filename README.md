@@ -136,7 +136,7 @@ white_october_breadcrumbs:
     linkRel:            ''
     locale:             ~ # defaults to null, so the default locale is used
     translation_domain: ~ # defaults to null, so the default domain is used
-    viewTemplate:       'WhiteOctoberBreadcrumbsBundle::microdata.html.twig'
+    viewTemplate:       '@WhiteOctoberBreadcrumbs/microdata.html.twig'
 ```
 
 These can also be passed as parameters in the view when rendering the
