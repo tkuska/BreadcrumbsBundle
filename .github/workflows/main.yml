@@ -2,7 +2,7 @@ name: CI build
 on: [ push, pull_request ]
 jobs:
     build:
-        name: PHP ${{ matrix.php-versions }} on ${{ matrix.operating-system }} ${{ matrix.symfony-version-label }}
+        name: PHP ${{ matrix.php-versions }} on ${{ matrix.operating-system }} ${{ matrix.extra-label }}
         runs-on: ${{ matrix.operating-system }}
         strategy:
             fail-fast: false
@@ -10,9 +10,11 @@ jobs:
                 operating-system: [ ubuntu-latest ]
                 php-versions: [ '7.3', '7.4' ]
                 composer-dependencies: [ '', '--prefer-lowest' ]
+                composer-version: [ 'v1' ]
                 symfony-version: [ '' ]
-                symfony-version-label: [ '' ]
+                extra-label: [ '' ]
                 include:
+                    # PHP 8.0
                     -   php-versions: '8.0'
                         operating-system: ubuntu-latest
                         composer-dependencies: '--prefer-lowest'
@@ -21,16 +23,24 @@ jobs:
                         operating-system: ubuntu-latest
                         composer-dependencies: ''
 
+                    # SF 4.4 and 5.1
                     -   php-versions: '7.4'
                         operating-system: ubuntu-latest
                         symfony-version: '4.4.*'
-                        symfony-version-label: 'SF 4.4'
+                        extra-label: 'SF 4.4'
 
                     -   php-versions: '7.4'
                         operating-system: ubuntu-latest
                         symfony-version: '5.1.*'
-                        symfony-version-label: 'SF 5.1'
+                        extra-label: 'SF 5.1'
 
+                    # Composer v2
+                    -   php-versions: '7.4'
+                        operating-system: ubuntu-latest
+                        composer-version: 'v2'
+                        extra-label: 'Composer v2'
+
+                    # Windows
                     -   php-versions: '7.4'
                         operating-system: windows-latest
 
@@ -43,7 +53,7 @@ jobs:
                 with:
                     php-version: ${{ matrix.php-versions }}
                     ini-values: memory_limit=-1
-                    tools: composer:v1
+                    tools: composer:${{ matrix.composer-version }}
 
             -   name: Get composer cache directory
                 id: composer-cache
