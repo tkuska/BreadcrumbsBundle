@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": "~7.3",
+        "php": "~7.3|~8.0",
         "symfony/framework-bundle": "^4.4|^5.0",
         "symfony/templating": "^4.4|^5.0",
         "symfony/translation-contracts": "^1.1|^2.0",
