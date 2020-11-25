@@ -20,7 +20,6 @@
             <argument type="service" id="twig" />
             <argument type="service" id="white_october_breadcrumbs" />
             <argument>%white_october_breadcrumbs.options%</argument>
-            <tag name="templating.helper" alias="breadcrumbs" />
         </service>
 
         <!-- Twig extension -->

@@ -2,16 +2,15 @@
 
 namespace WhiteOctober\BreadcrumbsBundle\Templating\Helper;
 
-use Symfony\Component\Templating\Helper\Helper;
 use Twig\Environment;
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 
-class BreadcrumbsHelper extends Helper
+class BreadcrumbsHelper
 {
     /**
      * @var Environment
      */
-    protected $templating;
+    protected $twig;
 
     /**
      * @var Breadcrumbs
@@ -24,13 +23,13 @@ class BreadcrumbsHelper extends Helper
     protected $options = array();
 
     /**
-     * @param \Twig\Environment $templating
+     * @param \Twig\Environment $twig
      * @param \WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs $breadcrumbs
      * @param array $options The default options load from config file
      */
-    public function __construct(Environment $templating, Breadcrumbs $breadcrumbs, array $options)
+    public function __construct(Environment $twig, Breadcrumbs $breadcrumbs, array $options)
     {
-        $this->templating  = $templating;
+        $this->twig  = $twig;
         $this->breadcrumbs = $breadcrumbs;
         $this->options = array_merge($options, array(
             'namespace' => Breadcrumbs::DEFAULT_NAMESPACE, // inject default namespace to options
@@ -50,7 +49,7 @@ class BreadcrumbsHelper extends Helper
         // Assign namespace breadcrumbs
         $options["breadcrumbs"] = $this->breadcrumbs->getNamespaceBreadcrumbs($options['namespace']);
 
-        return $this->templating->render(
+        return $this->twig->render(
             $options["viewTemplate"],
             $options
         );
