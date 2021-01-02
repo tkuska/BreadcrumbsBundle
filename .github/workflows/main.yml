@@ -8,21 +8,12 @@ jobs:
             fail-fast: false
             matrix:
                 operating-system: [ ubuntu-latest ]
-                php-versions: [ '7.3', '7.4' ]
+                php-versions: [ '7.4', '8.0' ]
                 composer-dependencies: [ '', '--prefer-lowest' ]
                 composer-version: [ 'v1' ]
                 symfony-version: [ '' ]
                 extra-label: [ '' ]
                 include:
-                    # PHP 8.0
-                    -   php-versions: '8.0'
-                        operating-system: ubuntu-latest
-                        composer-dependencies: '--prefer-lowest'
-
-                    -   php-versions: '8.0'
-                        operating-system: ubuntu-latest
-                        composer-dependencies: ''
-
                     # SF 4.4 and 5.1
                     -   php-versions: '7.4'
                         operating-system: ubuntu-latest
@@ -42,6 +33,10 @@ jobs:
 
                     # Windows
                     -   php-versions: '7.4'
+                        operating-system: windows-latest
+
+                    # Windows
+                    -   php-versions: '8.0'
                         operating-system: windows-latest
 
         steps:
