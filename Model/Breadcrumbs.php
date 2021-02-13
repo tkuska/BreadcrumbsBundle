@@ -165,6 +165,9 @@ class Breadcrumbs implements \Iterator, \ArrayAccess, \Countable
         return $this;
     }
 
+    /**
+     * @return \WhiteOctober\BreadcrumbsBundle\Model\SingleBreadcrumb[]
+     */
     public function getNamespaceBreadcrumbs($namespace = self::DEFAULT_NAMESPACE)
     {
         // Check whether requested namespace breadcrumbs is exists
@@ -179,11 +182,18 @@ class Breadcrumbs implements \Iterator, \ArrayAccess, \Countable
 
     /**
      * @param string $namespace
-     * @return bool
      */
-    public function hasNamespaceBreadcrumbs($namespace = self::DEFAULT_NAMESPACE)
+    public function hasNamespaceBreadcrumbs($namespace = self::DEFAULT_NAMESPACE): bool
     {
         return isset($this->breadcrumbs[$namespace]);
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getNamespaces(): array
+    {
+        return array_keys($this->breadcrumbs);
     }
 
     /**
