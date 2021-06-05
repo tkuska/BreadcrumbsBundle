@@ -5,4 +5,7 @@
     <framework:config secret="secret" test="true">
         <framework:router resource=""></framework:router>
     </framework:config>
+    <services>
+        <service id="translator" class="\WhiteOctober\BreadcrumbsBundle\Test\DummyTranslator" public="true"/>
+    </services>
 </container>
