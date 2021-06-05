@@ -14,16 +14,16 @@ jobs:
                 symfony-version: [ '' ]
                 extra-label: [ '' ]
                 include:
-                    # SF 4.4 and 5.1
-                    -   php-versions: '7.4'
+                    # SF 4.4 and 5.2
+                    -   php-versions: '8.0'
                         operating-system: ubuntu-latest
                         symfony-version: '4.4.*'
                         extra-label: 'SF 4.4'
 
-                    -   php-versions: '7.4'
+                    -   php-versions: '8.0'
                         operating-system: ubuntu-latest
-                        symfony-version: '5.1.*'
-                        extra-label: 'SF 5.1'
+                        symfony-version: '5.2.*'
+                        extra-label: 'SF 5.2'
 
                     # Composer v2
                     -   php-versions: '7.4'
