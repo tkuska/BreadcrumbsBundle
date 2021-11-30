@@ -23,10 +23,7 @@ class BreadcrumbsExtension extends AbstractExtension
         $this->breadcrumbs = $container->get("white_october_breadcrumbs");
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return array(
             new TwigFunction("wo_breadcrumbs", array($this, "getBreadcrumbs")),
@@ -35,10 +32,7 @@ class BreadcrumbsExtension extends AbstractExtension
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getFilters()
+    public function getFilters(): array
     {
         return array(
             new TwigFilter("wo_is_final_breadcrumb", array($this, "isLastBreadcrumb")),

@@ -204,52 +204,67 @@ class Breadcrumbs implements \Iterator, \ArrayAccess, \Countable
         $this->router = $router;
     }
 
+    /**
+     * @return void
+     */
     public function rewind($namespace = self::DEFAULT_NAMESPACE)
     {
         return reset($this->breadcrumbs[$namespace]);
     }
 
+    /**
+     * @return mixed
+     */
     public function current($namespace = self::DEFAULT_NAMESPACE)
     {
         return current($this->breadcrumbs[$namespace]);
     }
 
+    /**
+     * @return string|float|int|bool|null
+     */
     public function key($namespace = self::DEFAULT_NAMESPACE)
     {
         return key($this->breadcrumbs[$namespace]);
     }
 
+    /**
+     * @return void
+     */
     public function next($namespace = self::DEFAULT_NAMESPACE)
     {
         return next($this->breadcrumbs[$namespace]);
     }
 
-    public function valid($namespace = self::DEFAULT_NAMESPACE)
+    public function valid($namespace = self::DEFAULT_NAMESPACE): bool
     {
         return null !== key($this->breadcrumbs[$namespace]);
     }
 
-    public function offsetExists($offset, $namespace = self::DEFAULT_NAMESPACE)
+    public function offsetExists($offset, $namespace = self::DEFAULT_NAMESPACE): bool
     {
         return isset($this->breadcrumbs[$namespace][$offset]);
     }
 
-    public function offsetSet($offset, $value, $namespace = self::DEFAULT_NAMESPACE)
+    public function offsetSet($offset, $value, $namespace = self::DEFAULT_NAMESPACE): void
     {
         $this->breadcrumbs[$namespace][$offset] = $value;
     }
 
+    /**
+     * @return mixed
+     */
     public function offsetGet($offset, $namespace = self::DEFAULT_NAMESPACE)
     {
         return isset($this->breadcrumbs[$namespace][$offset]) ? $this->breadcrumbs[$namespace][$offset] : null;
     }
 
-    public function offsetUnset($offset, $namespace = self::DEFAULT_NAMESPACE)
+    public function offsetUnset($offset, $namespace = self::DEFAULT_NAMESPACE): void
     {
         unset($this->breadcrumbs[$namespace][$offset]);
     }
 
-    public function count($namespace = self::DEFAULT_NAMESPACE)
+    public function count($namespace = self::DEFAULT_NAMESPACE): int
     {
         return count($this->breadcrumbs[$namespace]);
     }
