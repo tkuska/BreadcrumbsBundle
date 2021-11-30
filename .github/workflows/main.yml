@@ -10,11 +10,10 @@ jobs:
                 operating-system: [ ubuntu-latest ]
                 php-versions: [ '7.4', '8.0', '8.1' ]
                 composer-dependencies: [ '', '--prefer-lowest' ]
-                composer-version: [ 'v1' ]
                 symfony-version: [ '' ]
                 extra-label: [ '' ]
                 include:
-                    # SF 4.4 and 5.2
+                    # SF 4.4 and 5.4
                     -   php-versions: '8.0'
                         operating-system: ubuntu-latest
                         symfony-version: '4.4.*'
@@ -22,14 +21,8 @@ jobs:
 
                     -   php-versions: '8.0'
                         operating-system: ubuntu-latest
-                        symfony-version: '5.2.*'
-                        extra-label: 'SF 5.2'
-
-                    # Composer v2
-                    -   php-versions: '7.4'
-                        operating-system: ubuntu-latest
-                        composer-version: 'v2'
-                        extra-label: 'Composer v2'
+                        symfony-version: '5.4.*'
+                        extra-label: 'SF 5.4'
 
                     # Windows
                     -   php-versions: '7.4'
@@ -52,7 +45,7 @@ jobs:
                 with:
                     php-version: ${{ matrix.php-versions }}
                     ini-values: memory_limit=-1
-                    tools: composer:${{ matrix.composer-version }}
+                    tools: composer:v2
 
             -   name: Get composer cache directory
                 id: composer-cache
