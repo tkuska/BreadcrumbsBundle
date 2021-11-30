@@ -44,7 +44,7 @@ class AppKernel extends Kernel
         $this->bundlesToRegister[] = $bundleClassName;
     }
 
-    public function registerBundles()
+    public function registerBundles(): iterable
     {
         $this->bundlesToRegister = array_unique($this->bundlesToRegister);
         $bundles = [];

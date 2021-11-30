@@ -1,5 +1,8 @@
 <?php
 
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
 class BundleTest extends \Symfony\Bundle\FrameworkBundle\Test\WebTestCase
 {
     public function testInitBundle()
@@ -22,7 +25,7 @@ class BundleTest extends \Symfony\Bundle\FrameworkBundle\Test\WebTestCase
         $container = $client->getContainer();
 
         /** @var \WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs $service */
-        $service = static::$container->get(WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs::class);
+        $service = $this->getContainerForTests()->get(WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs::class);
         $service->addItem('foo');
 
         /** @var \WhiteOctober\BreadcrumbsBundle\Twig\Extension\BreadcrumbsExtension $breadcrumbsExtension */
@@ -41,7 +44,7 @@ class BundleTest extends \Symfony\Bundle\FrameworkBundle\Test\WebTestCase
         $container = $client->getContainer();
 
         /** @var \WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs $service */
-        $service = static::$container->get(WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs::class);
+        $service = $this->getContainerForTests()->get(WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs::class);
         $service->addItem('foo', '', ['name' => 'John']);
 
         /** @var \WhiteOctober\BreadcrumbsBundle\Twig\Extension\BreadcrumbsExtension $breadcrumbsExtension */
@@ -62,7 +65,7 @@ class BundleTest extends \Symfony\Bundle\FrameworkBundle\Test\WebTestCase
         $container = $client->getContainer();
 
         /** @var \WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs $service */
-        $service = static::$container->get(WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs::class);
+        $service = $this->getContainerForTests()->get(WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs::class);
         $service->addItem('foo');
         $service->addItem('bar', '', ['name' => 'John']);
 
@@ -78,7 +81,16 @@ class BundleTest extends \Symfony\Bundle\FrameworkBundle\Test\WebTestCase
         );
     }
 
-    public static function getKernelClass()
+    private function getContainerForTests(): ContainerInterface
+    {
+        if (method_exists(WebTestCase::class, 'getContainer')) {
+            return static::getContainer();
+        }
+
+        return static::$container;
+    }
+
+    public static function getKernelClass(): string
     {
         return \WhiteOctober\BreadcrumbsBundle\Test\AppKernel::class;
     }

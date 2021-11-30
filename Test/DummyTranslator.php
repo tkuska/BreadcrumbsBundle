@@ -7,7 +7,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 final class DummyTranslator implements TranslatorInterface
 {
 
-    public function trans($id, array $parameters = [], $domain = null, $locale = null)
+    public function trans($id, array $parameters = [], $domain = null, $locale = null): string
     {
         $return = $id;
         if (count($parameters) > 0) {
