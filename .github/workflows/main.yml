@@ -24,6 +24,11 @@ jobs:
                         symfony-version: '5.4.*'
                         extra-label: 'SF 5.4'
 
+                    -   php-versions: '8.1'
+                        operating-system: ubuntu-latest
+                        symfony-version: '5.4.*'
+                        extra-label: 'SF 5.4'
+
                     # Windows
                     -   php-versions: '7.4'
                         operating-system: windows-latest
