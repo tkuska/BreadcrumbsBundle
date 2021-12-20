@@ -10,6 +10,10 @@
          beStrictAboutChangesToGlobalState="true"
          beStrictAboutOutputDuringTests="true"
 >
+    <php>
+        <ini name="error_reporting" value="-1" />
+    </php>
+
     <testsuites>
         <testsuite name="BreadcrumbsBundle Test Suite">
             <directory>Test/</directory>
