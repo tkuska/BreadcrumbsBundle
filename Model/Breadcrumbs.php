@@ -204,36 +204,32 @@ class Breadcrumbs implements \Iterator, \ArrayAccess, \Countable
         $this->router = $router;
     }
 
-    /**
-     * @return void
-     */
-    public function rewind($namespace = self::DEFAULT_NAMESPACE)
+    public function rewind($namespace = self::DEFAULT_NAMESPACE): void
     {
-        return reset($this->breadcrumbs[$namespace]);
+        reset($this->breadcrumbs[$namespace]);
     }
 
     /**
-     * @return mixed
+     * @return mixed Cannot be specified as return type because it was not available in PHP 7.4
      */
+    #[\ReturnTypeWillChange]
     public function current($namespace = self::DEFAULT_NAMESPACE)
     {
         return current($this->breadcrumbs[$namespace]);
     }
 
     /**
-     * @return string|float|int|bool|null
+     * @return mixed Cannot be specified as return type because it was not available in PHP 7.4
      */
+    #[\ReturnTypeWillChange]
     public function key($namespace = self::DEFAULT_NAMESPACE)
     {
         return key($this->breadcrumbs[$namespace]);
     }
 
-    /**
-     * @return void
-     */
-    public function next($namespace = self::DEFAULT_NAMESPACE)
+    public function next($namespace = self::DEFAULT_NAMESPACE): void
     {
-        return next($this->breadcrumbs[$namespace]);
+        next($this->breadcrumbs[$namespace]);
     }
 
     public function valid($namespace = self::DEFAULT_NAMESPACE): bool
@@ -252,8 +248,9 @@ class Breadcrumbs implements \Iterator, \ArrayAccess, \Countable
     }
 
     /**
-     * @return mixed
+     * @return mixed Cannot be specified as return type because it was not available in PHP 7.4
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset, $namespace = self::DEFAULT_NAMESPACE)
     {
         return isset($this->breadcrumbs[$namespace][$offset]) ? $this->breadcrumbs[$namespace][$offset] : null;
